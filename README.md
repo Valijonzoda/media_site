@@ -7,7 +7,7 @@ This Django project is designed to manage and serve TV shows and movies.
 1. Clone the repository:
    ```bash
    git clone https://github.com/Valijonzoda/Media-site_.git
-   cd media-site
+   cd Media-site_
    
 - Set up a virtual environment and activate it:
   ```bash
