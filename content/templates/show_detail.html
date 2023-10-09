@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Detail</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">{{ show.name }}</h1>
+            <p class="lead">{{ show.description }}</p>
+            <img src="{{ show.image.url }}" alt="{{ show.name }}" class="img-fluid">
+        </div>
+
+        <h2>Seasons</h2>
+        <ul class="list-group">
+            {% for season in seasons %}
+                <li class="list-group-item">
+                    <h3>
+                        Season {{ season.season_number }}
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#season{{ season.season_number }}" aria-expanded="false" aria-controls="season{{ season.season_number }}">
+                            Show Episodes
+                        </button>
+                    </h3>
+                    <div class="collapse" id="season{{ season.season_number }}">
+                        <ul class="list-group">
+                            {% for episode in season.episode_set.all %}
+                                <li class="list-group-item">
+                                    Episode {{ episode.episode_number }}: {{ episode.name }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

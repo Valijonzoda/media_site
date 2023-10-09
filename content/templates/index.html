@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Site</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="movies-tab" data-toggle="tab" href="#movies" role="tab" aria-controls="movies" aria-selected="true">Movies</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="shows-tab" data-toggle="tab" href="#shows" role="tab" aria-controls="shows" aria-selected="false">Shows</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="genre-tab" data-toggle="tab" href="#genre" role="tab" aria-controls="genre" aria-selected="false">Genre</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="movies" role="tabpanel" aria-labelledby="movies-tab">
+                <h2>Movies</h2>
+                <div class="row">
+                    {% for movie in movies %}
+                        <div class="col-md-3">
+                            <a href="{% url 'movie_detail' slug=movie.slug %}">{{ movie.name }}
+
+                                <img src="{{ MEDIA_URL }}{{ movie.image.url }}" alt="{{ movie.name }}" class="img-fluid" width="200" height="250"></a>
+                                <p >{{ movie.name }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="shows" role="tabpanel" aria-labelledby="shows-tab">
+                <h2>Shows</h2>
+                <div class="row">
+                    {% for show in shows %}
+                        <div class="col-md-3">
+                            <a href="{% url 'show_detail' slug=show.slug %}">
+                                <img src="{{ show.image.url }}" alt="{{ show.name }}" class="img-fluid">
+                                <p>{{ show.title }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="genre" role="tabpanel" aria-labelledby="genre-tab">
+    <h2>Genre</h2>
+    <div class="row">
+        <ul>
+            {% for genre in genres %}
+                <li>{{ genre.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
