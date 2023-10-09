@@ -25,14 +25,16 @@ bash
 Copy code
 python manage.py migrate
 python manage.py runserver
-Usage
-Access the admin interface at: http://127.0.0.1:8000/admin/
-API endpoints for shows and movies:
-Get shows: http://127.0.0.1:8000/api/shows/
-Get a specific show: http://127.0.0.1:8000/api/shows/{show_id}/
-Get show seasons: http://127.0.0.1:8000/api/shows/{show_id}/seasons/
-Get show episodes: http://127.0.0.1:8000/api/shows/{show_id}/episodes/
-Get episode sources: http://127.0.0.1:8000/api/episodes/{episode_id}/sources/
+## Usage
+
+- Access the admin interface at: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+- API endpoints for shows and movies:
+  - Get shows: [http://127.0.0.1:8000/api/shows/](http://127.0.0.1:8000/api/shows/)
+  - Get a specific show: [http://127.0.0.1:8000/api/shows/{show_id}/](http://127.0.0.1:8000/api/shows/{show_id}/)
+  - Get show seasons: [http://127.0.0.1:8000/api/shows/{show_id}/seasons/](http://127.0.0.1:8000/api/shows/{show_id}/seasons/)
+  - Get show episodes: [http://127.0.0.1:8000/api/shows/{show_id}/episodes/](http://127.0.0.1:8000/api/shows/{show_id}/episodes/)
+  - Get episode sources: [http://127.0.0.1:8000/api/episodes/{episode_id}/sources/](http://127.0.0.1:8000/api/episodes/{episode_id}/sources/)
+
 
 To run the project using Docker, follow the Dockerfile and instructions in the repository.
 
