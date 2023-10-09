@@ -6,104 +6,257 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Episode',
+            name="Episode",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.TextField()),
-                ('name', models.CharField(max_length=100)),
-                ('episode_number', models.PositiveIntegerField()),
-                ('image', models.ImageField(blank=True, null=True, upload_to='shows/seasons/episode')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.TextField()),
+                ("name", models.CharField(max_length=100)),
+                ("episode_number", models.PositiveIntegerField()),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="shows/seasons/episode"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Genre',
+            name="Genre",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='genre_images/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to="genre_images/"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Movie',
+            name="Movie",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField()),
-                ('release_year', models.CharField(max_length=5)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='movie_images/')),
-                ('slug', models.SlugField(max_length=255, unique=True)),
-                ('kinopoisk_rating', models.FloatField(default=0.0, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10)])),
-                ('imdb_rating', models.FloatField(default=0.0, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10)])),
-                ('kinopoisk_code', models.CharField(blank=True, max_length=25, null=True)),
-                ('imdb_code', models.CharField(blank=True, max_length=25, null=True)),
-                ('genres', models.ManyToManyField(to='content.genre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField()),
+                ("release_year", models.CharField(max_length=5)),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to="movie_images/"),
+                ),
+                ("slug", models.SlugField(max_length=255, unique=True)),
+                (
+                    "kinopoisk_rating",
+                    models.FloatField(
+                        default=0.0,
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(10),
+                        ],
+                    ),
+                ),
+                (
+                    "imdb_rating",
+                    models.FloatField(
+                        default=0.0,
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(10),
+                        ],
+                    ),
+                ),
+                (
+                    "kinopoisk_code",
+                    models.CharField(blank=True, max_length=25, null=True),
+                ),
+                ("imdb_code", models.CharField(blank=True, max_length=25, null=True)),
+                ("genres", models.ManyToManyField(to="content.genre")),
             ],
         ),
         migrations.CreateModel(
-            name='Show',
+            name="Show",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('description', models.TextField()),
-                ('first_aired', models.DateField()),
-                ('image', models.ImageField(blank=True, null=True, upload_to='show_images')),
-                ('slug', models.SlugField(max_length=255, unique=True)),
-                ('kinopoisk_rating', models.FloatField(default=0.0, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10)])),
-                ('imdb_rating', models.FloatField(default=0.0, validators=[django.core.validators.MinValueValidator(0.0), django.core.validators.MaxValueValidator(10)])),
-                ('kinopoisk_code', models.CharField(blank=True, max_length=25, null=True)),
-                ('imdb_code', models.CharField(blank=True, max_length=25, null=True)),
-                ('genres', models.ManyToManyField(related_name='genre', to='content.genre')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("description", models.TextField()),
+                ("first_aired", models.DateField()),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to="show_images"),
+                ),
+                ("slug", models.SlugField(max_length=255, unique=True)),
+                (
+                    "kinopoisk_rating",
+                    models.FloatField(
+                        default=0.0,
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(10),
+                        ],
+                    ),
+                ),
+                (
+                    "imdb_rating",
+                    models.FloatField(
+                        default=0.0,
+                        validators=[
+                            django.core.validators.MinValueValidator(0.0),
+                            django.core.validators.MaxValueValidator(10),
+                        ],
+                    ),
+                ),
+                (
+                    "kinopoisk_code",
+                    models.CharField(blank=True, max_length=25, null=True),
+                ),
+                ("imdb_code", models.CharField(blank=True, max_length=25, null=True)),
+                (
+                    "genres",
+                    models.ManyToManyField(related_name="genre", to="content.genre"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Season',
+            name="Season",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('season_number', models.PositiveIntegerField()),
-                ('descriptions', models.TextField()),
-                ('image', models.ImageField(blank=True, null=True, upload_to='shows/seasons/')),
-                ('show', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content.show')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("season_number", models.PositiveIntegerField()),
+                ("descriptions", models.TextField()),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, null=True, upload_to="shows/seasons/"
+                    ),
+                ),
+                (
+                    "show",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="content.show"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='MovieSource',
+            name="MovieSource",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('video_quality', models.CharField(choices=[('HD', '480p'), ('Full_HD', '1080p'), ('4K', '2160p')], max_length=10)),
-                ('url', models.URLField()),
-                ('created_at', models.DateField(auto_now_add=True)),
-                ('is_valid', models.BooleanField(default=False)),
-                ('movie', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='movie_sources', to='content.movie')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "video_quality",
+                    models.CharField(
+                        choices=[("HD", "480p"), ("Full_HD", "1080p"), ("4K", "2160p")],
+                        max_length=10,
+                    ),
+                ),
+                ("url", models.URLField()),
+                ("created_at", models.DateField(auto_now_add=True)),
+                ("is_valid", models.BooleanField(default=False)),
+                (
+                    "movie",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="movie_sources",
+                        to="content.movie",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='EpisodeSource',
+            name="EpisodeSource",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('video_quality', models.CharField(choices=[('HD', '480p'), ('Full_HD', '1080p'), ('4K', '2160p')], max_length=10)),
-                ('url', models.URLField()),
-                ('created_at', models.DateField(auto_now_add=True)),
-                ('is_valid', models.BooleanField(default=False)),
-                ('episode', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='episode_sources', to='content.episode')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "video_quality",
+                    models.CharField(
+                        choices=[("HD", "480p"), ("Full_HD", "1080p"), ("4K", "2160p")],
+                        max_length=10,
+                    ),
+                ),
+                ("url", models.URLField()),
+                ("created_at", models.DateField(auto_now_add=True)),
+                ("is_valid", models.BooleanField(default=False)),
+                (
+                    "episode",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="episode_sources",
+                        to="content.episode",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.AddField(
-            model_name='episode',
-            name='season',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='season', to='content.season'),
+            model_name="episode",
+            name="season",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="season",
+                to="content.season",
+            ),
         ),
     ]

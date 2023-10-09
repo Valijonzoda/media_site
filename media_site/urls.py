@@ -24,16 +24,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', movie_home, name='home'),
-    path('movie/<slug:slug>/', movie_detail, name='movie_detail'),
-    path('show/<slug:slug>/', show_detail, name='show_detail'),
-    path('genre/<int:pk>/', genre_detail, name='genre_detail'),
-
+    path("admin/", admin.site.urls),
+    path("", movie_home, name="home"),
+    path("movie/<slug:slug>/", movie_detail, name="movie_detail"),
+    path("show/<slug:slug>/", show_detail, name="show_detail"),
+    path("genre/<int:pk>/", genre_detail, name="genre_detail"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
