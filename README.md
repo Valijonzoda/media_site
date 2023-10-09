@@ -8,23 +8,22 @@ This Django project is designed to manage and serve TV shows and movies.
    ```bash
    git clone https://github.com/Valijonzoda/Media-site_.git
    cd media-site
-Set up a virtual environment and activate it:
+   
+- Set up a virtual environment and activate it:
+  ```bash
+  python -m venv venv
+  source venv/bin/activate   # On Windows, use: venv\Scripts\activate
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
 Install the required dependencies:
-
-bash
-Copy code
+```bash
 pip install -r requirements.txt
+```
 Apply migrations and start the server:
 
-bash
-Copy code
+```bash
 python manage.py migrate
 python manage.py runserver
+```
 ## Usage
 
 - Access the admin interface at: [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
